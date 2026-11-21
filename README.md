@@ -1,40 +1,48 @@
+
 # Cognitively Aware AI Nutrition Chatbot
 
-A course project using Python, Gradio, and Anthropic Claude to combine a deterministic nutrition rule engine with LLM-generated recommendations and contextual follow-up chat.
+An interactive GenAI nutrition assistant built with **Anthropic Claude** and **Gradio**. It combines nutritional analysis with personalized recommendations, multi-turn conversations, and meal-trend visualizations.
 
 ## Features
-- Exact and RapidFuzz-based matching across **107 food records**, followed by Claude estimation for unmatched items when an API key is configured.
-- Per-serving nutrient calculations and heuristic dietary flags.
-- Conversational follow-up questions and **per-browser-session** memory (not persistent storage).
-- Prompting based on four behavioral frameworks: Cognitive Load Theory, Health Belief Model, Nudge Theory, and Information Foraging Theory.
-- Plotly macronutrient and recent-analysis trend charts (the last seven analyses, **not** necessarily seven calendar days).
-- Pydantic validation of Claude-generated nutrient estimates.
 
-## Run locally
+- **Conversational AI:** Context-aware follow-up questions with session-based chat memory.
+- **Cognitively Aware Prompts:** Personalized recommendations guided by Cognitive Load Theory, the Health Belief Model, Nudge Theory, and Information Foraging Theory.
+- **Hybrid Nutrition Analysis:** Rule-based nutrient calculations and dietary checks combined with Claude-generated insights.
+- **Intelligent Food Matching:** Exact lookup and RapidFuzz similarity matching across **107 food records**, with Claude-based estimation for unmatched foods.
+- **Visual Insights:** Interactive macronutrient charts and recent meal-analysis trends using Plotly.
+- **Structured AI Output:** Pydantic validation for generated nutritional estimates.
+
+## Tech Stack
+
+**Python · Anthropic Claude API · Gradio · Pandas · RapidFuzz · Pydantic · Plotly**
+
+## Demo
+
+[Watch Project Demonstration](https://mediaspace.illinois.edu/media/t/1_st7dvq7y)
+
+## Run Locally
+
+Install dependencies:
 
 ```bash
-python -m venv .venv
-# Activate the virtual environment (Windows: .venv\Scripts\activate; macOS/Linux: source .venv/bin/activate)
 pip install -r requirements.txt
 ```
 
-Set `ANTHROPIC_API_KEY` as an environment variable or in a local `.env` loader of your choice. **Never commit your key.** The app still performs rule-based analysis without one.
+Set your `ANTHROPIC_API_KEY` environment variable and run:
 
 ```bash
 python app.py
 ```
 
-Then open http://localhost:7860.
+Open `http://localhost:7860` in your browser.
 
-## Files
-- `app.py`: Gradio user interface and event handlers
-- `nutrition_engine.py`: food matching, rules, memory class, Claude API integration
-- `data/foods.csv`: built-in sample nutritional records
-- `tests/`: deterministic tests
-- `notebooks/IS596_FINAL_sanitized.ipynb`: original Colab notebook with notebook outputs cleared and the embedded API credential replaced. **Historical notebook code has not been refactored** to match `app.py`.
+## Project Structure
 
-## Disclaimer
-This is an educational demo, not medical or individualized dietary advice. Nutrient records are approximate, LLM fallback estimates are unverified, and the rule thresholds are educational heuristics. Do not enter sensitive health information.
-
-## Demo
-Add your recorded demo video URL here after reviewing it for privacy.
+```text
+app.py                 # Gradio interface
+nutrition_engine.py    # Food matching, nutrition rules, Claude integration
+requirements.txt       # Python dependencies
+data/foods.csv         # Nutrition dataset
+tests/                 # Automated nutrition tests
+notebooks/             # Colab notebook
+```
